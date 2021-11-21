@@ -23,9 +23,18 @@ class AnimatedSwitcherGenreListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedSwitcher(
       transitionBuilder: (Widget child, Animation<double> animation) {
+        if (animationType == AnimationType.Scale) {
+          return ScaleTransition(child: child, scale: animation);
+        } else if (animationType == AnimationType.Fade) {
+          return FadeTransition(child: child, opacity: animation);
+        } else if (animationType == AnimationType.Size) {
+          return SizeTransition(child: child, sizeFactor: animation);
+        } else {
+          throw Exception();
+        }
         // return ScaleTransition(child: child, scale: animation);
         // return FadeTransition(child: child, opacity: animation);
-        return SizeTransition(child: child, sizeFactor: animation);
+        // return SizeTransition(child: child, sizeFactor: animation);
       },
       duration: const Duration(milliseconds: 200),
       child: GestureDetector(

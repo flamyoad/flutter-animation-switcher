@@ -2,6 +2,28 @@
 
 Expand/collapse animation on ListView items with BLoC/Cubit architecture.
 
+We need to do wrap childs in `AnimationSwitcher` widget for animation since there is no [DiffUtil](https://www.google.com/search?q=diffutil+android&rlz=1C5CHFA_enMY955MY956&oq=diffutil+android&aqs=chrome..69i57j0i512l3j0i22i30j69i60l3.1750j0j4&sourceid=chrome&ie=UTF-8) equivalent in Dart world.
+
+Example:
+```dart  
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedSwitcher(
+      transitionBuilder: (Widget child, Animation<double> animation) {
+        return ScaleTransition(child: child, scale: animation);
+        // return FadeTransition(child: child, opacity: animation);
+        // return SizeTransition(child: child, sizeFactor: animation);
+      },
+      duration: const Duration(milliseconds: 200),
+      child: GestureDetector(
+        key: ValueKey<bool>(widget.isSelected), // The difference in this value will determine whether animation will run.
+        child: Container(
+           // Your code
+        )
+      );
+  }
+```
+
 You can check out files at below for relevant code
 ```
 presentation

@@ -1,8 +1,8 @@
 # flutter-animation-switcher
 
-Expand/collapse animation on ListView items with BLoC/Cubit architecture.
+Expand/collapse animation on `ListView` items or `Row/Column of Widgets` with BLoC/Cubit architecture.
 
-We need to do wrap childs in `AnimationSwitcher` widget for animation since there is no [DiffUtil](https://www.google.com/search?q=diffutil+android&rlz=1C5CHFA_enMY955MY956&oq=diffutil+android&aqs=chrome..69i57j0i512l3j0i22i30j69i60l3.1750j0j4&sourceid=chrome&ie=UTF-8) equivalent in Dart world.
+What we need to do is wrap childs in `AnimationSwitcher` widget for animation since there is no [DiffUtil](https://www.google.com/search?q=diffutil+android&rlz=1C5CHFA_enMY955MY956&oq=diffutil+android&aqs=chrome..69i57j0i512l3j0i22i30j69i60l3.1750j0j4&sourceid=chrome&ie=UTF-8) equivalent in Dart world.
 
 Example:
 ```dart  
